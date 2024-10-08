@@ -45,21 +45,3 @@ namespace Api.Function
         public int Count { get; set; }
     }
 }
-/*
-namespace Api.Function
-{
-    public static class GetVisitorCounter
-    {
-        [Function("GetVisitorCounter")]
-        [CosmosDBOutput("AzureResume", "Counter", Connection = "CosmosDBConnectionString")]
-        public static object Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req,
-        [CosmosDBInput("AzureResume", "Counter", Connection = "CosmosDBConnectionString", Id = "1", PartitionKey = "1")] Counter counter,
-            FunctionContext executionContext)
-        {
-            counter.Count++;
-            return counter;
-        }
-    }
-
-}
-*/
