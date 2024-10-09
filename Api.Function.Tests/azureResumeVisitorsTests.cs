@@ -9,7 +9,7 @@ namespace Api.Function.Tests.Unit
 
         public azureResumeVisitorsTests()
         {
-            _sut = new azureResumeVisitors(null);  // No need for a logger in this test
+            _sut = new azureResumeVisitors(null);  // No need for a logger in this test.
         }
 
         [Fact]
