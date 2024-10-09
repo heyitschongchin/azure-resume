@@ -24,7 +24,7 @@ namespace Api.Function
             [CosmosDBInput("AzureResume", "Counter", Connection = "CosmosDbConnectionString", Id = "1", PartitionKey = "1")] Counter counter)
         {
             _logger.LogInformation("Processing request...");
-            //testing worflow
+            //counter is here
             counter.Count++;
 
             var response = req.CreateResponse(HttpStatusCode.OK);
