@@ -8,16 +8,16 @@ using System.Text.Json;
 
 namespace Api.Function
 {
-    public class GetVisitorCounter
+    public class azureResumeVisitors
     {
-        private readonly ILogger<GetVisitorCounter> _logger;
+        private readonly ILogger<azureResumeVisitors> _logger;
 
-        public GetVisitorCounter(ILogger<GetVisitorCounter> logger)
+        public azureResumeVisitors(ILogger<azureResumeVisitors> logger)
         {
             _logger = logger;
         }
 
-        [Function("GetVisitorCounter")]
+        [Function("azureResumeVisitors")]
         [CosmosDBOutput("AzureResume", "Counter", Connection = "CosmosDbConnectionString")]
         public async Task<Counter> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req,
