@@ -37,11 +37,13 @@ jobs:
           dotnet build --configuration Release --output ./output
           popd
   
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+            client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4EFAB632A87C4F659B2D140740F37A6C }}
+            tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_05602F78FC2140B39C180B9B0785841F }}
+            subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_ECAEE262337041E5850E76F0EDF9064E }}
+  
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
-        id: fa
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           
