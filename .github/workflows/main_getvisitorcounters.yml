@@ -4,11 +4,13 @@ on:
   push:
     branches: [ main ]
     paths:
-    - 'api/**' 
+    - 'api/**'
+    - 'Api.Function.Tests/**' 
 
 env:
   AZURE_FUNCTIONAPP_NAME: azureResumeVisitors   # set this to your function app name on Azure
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'api'       # set this to the path to your function app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_TESTPATH: 'Api.Function.Tests'
   DOTNET_VERSION: '8.0.x'                   # set this to the dotnet version to use (e.g. '2.1.x', '3.1.x', '5.0.x')
 
 jobs:
@@ -35,6 +37,12 @@ jobs:
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet build --configuration Release --output ./output
         popd
+
+    - name: 'Run dotnet test'
+      shell: bash
+      run: |
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_TESTPATH }}'
+        dotnet test
 
 
     - name: 'Run Azure Functions Action'
