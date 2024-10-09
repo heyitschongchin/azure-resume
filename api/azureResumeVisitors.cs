@@ -24,8 +24,7 @@ namespace Api.Function
             [CosmosDBInput("AzureResume", "Counter", Connection = "CosmosDbConnectionString", Id = "1", PartitionKey = "1")] Counter counter)
         {
             _logger.LogInformation("Processing request...");
-            //counter is here.
-            counter.Count++;
+            counter = IncrementCounter(counter);
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
@@ -33,6 +32,12 @@ namespace Api.Function
             await response.WriteStringAsync(jsonString);
 
             return counter; // This is what will be saved back to Cosmos DB
+        }
+
+        public Counter IncrementCounter(Counter counter)
+        {
+            counter.Count++;
+            return counter;
         }
     }
 
