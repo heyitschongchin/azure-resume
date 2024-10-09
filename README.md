@@ -3,7 +3,7 @@ This is my Cloud Resume Challenge built on Azure which my progect to get hands-o
 Here is my AzureCloudResume Website : [here](https://www.chongchin.org)
 
 If you wish to build your own Azure Cloud Resume, you may refer to YouTube [video](https://youtu.be/ieYrBWmkfno) by Gwyneth. :)
-
+![overview](overview.png)
 
 
 ## Resources:
